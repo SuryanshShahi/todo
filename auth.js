@@ -28,7 +28,6 @@ router.post("/SignUp", async (req, res) => {
 
       await user.save();
       res.status(201).json({ message: "user registered successfully" });
-
     }
   } catch (err) {
     console.log(err);
@@ -56,6 +55,16 @@ router.post("/SignIn", async (req, res) => {
   } catch (err) {
     console.log(err);
   }
+});
+
+// User.find({},function(err, users){
+//   if(err) console.log(err);
+//   console.log(users);
+// })
+router.get("/users", function (req, res) {
+  User.find().then((data) => {
+    res.status(201).json(data);
+  });
 });
 
 module.exports = router;
